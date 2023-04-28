@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgoit_test=self.webpackChunkgoit_test||[]).push([[75],{75:function(i,t,e){e.r(t);var u=e(184);t.default=function(){return(0,u.jsxs)("div",{children:[(0,u.jsx)("h1",{children:"Welcome to our social media"}),(0,u.jsx)("p",{children:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto, laboriosam placeat incidunt rem illum animi nemo quibusdam quia voluptatum voluptate."})]})}}}]);
+//# sourceMappingURL=75.69981f14.chunk.js.map
