@@ -1,0 +1,24 @@
+.tweets_list{
+margin: 0 auto;
+    list-style: none;
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(auto-fill, 380px);
+    padding: 0;
+}
+
+.tweets_item{
+  width: 380px;
+  height: 460px;
+  border-radius: 20px;
+  background: linear-gradient(
+    114.99deg,
+    #471ca9 -0.99%,
+    #5736a3 54.28%,
+    #4b2a99 78.99%
+  );
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.tweets_item:hover,.tweets_item:focus {
+ transform: scale(1.03);
+  }

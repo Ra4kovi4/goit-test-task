@@ -1,0 +1,20 @@
+.button_container{
+padding-top: 15px;
+margin-bottom: 25px;
+width:110px;
+}
+
+.back_link{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color:#373737;
+    font-weight: 600;
+    font-size: inherit;
+}
+.back_link:hover,.back_link:focus{
+
+    color:#410c7a;
+
+}
