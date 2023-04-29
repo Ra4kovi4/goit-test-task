@@ -2,7 +2,7 @@
   "name": "goit_test",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ra4kovi4.github.io/goit-test-task",
+  "homepage": "https://ra4kovi4.github.io/goit-test-task/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
