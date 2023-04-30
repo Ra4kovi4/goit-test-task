@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgoit_test=self.webpackChunkgoit_test||[]).push([[290],{290:function(e,t,s){s.r(t),s.d(t,{default:function(){return _}});var n="Home_home_container__-C8Dm",o="Home_content_wrapper__SrSz4",c="Home_home_title__Whyko",r=s(184),_=function(){return(0,r.jsxs)("div",{className:n,children:[(0,r.jsx)("div",{className:o}),(0,r.jsx)("h1",{className:c,children:"Welcome to our Tweets app"})]})}}}]);
+//# sourceMappingURL=290.2644d22c.chunk.js.map
