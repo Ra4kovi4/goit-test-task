@@ -1,11 +1,11 @@
-import axios from "axios";
+import axios from 'axios';
 
-  export const updateUser = async (id,followers) => {
-    try {
-      const {data} = await axios.put(`/users/${id}`, followers);
+export const updateUser = async (id, followers) => {
+  try {
+    const { data } = await axios.put(`/users/${id}`, followers);
 
-return data
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};

@@ -9,7 +9,9 @@ export const Loader = () => {
       color="#6213ebea"
       ariaLabel="three-dots-loading"
       wrapperStyle={{
-        display: 'flex', justifyContent: 'center', alignItems: 'center'
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
     />
   );

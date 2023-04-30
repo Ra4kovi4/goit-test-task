@@ -1,15 +1,12 @@
+import css from './Home.module.css';
+
 const Home = () => {
-    return (
-      <div>
-        <h1>Welcome to our social media</h1>
-      
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto,
-          laboriosam placeat incidunt rem illum animi nemo quibusdam quia
-          voluptatum voluptate.
-        </p>
-      </div>
-    );
-  };
-  
-  export default Home;
+  return (
+    <div className={css.home_container}>
+      <div className={css.content_wrapper}></div>
+        <h1 className={css.home_title}>Welcome to our Tweets app</h1>
+    </div>
+  );
+};
+
+export default Home;

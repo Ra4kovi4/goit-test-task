@@ -1,0 +1,36 @@
+.wrapper {
+  display: flex;
+  gap: 4px;
+}
+
+.btn {
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  background-color: #e2e5e8;
+  color: inherit;
+}
+
+.btn_select {
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  background-color: #6e68d1;
+  color: #fff;
+}
+
+.btn:hover {
+  background-color: #5615d0;
+  color: #fff;
+}
+
+.btn:active {
+  background-color: #430ad1;
+  color: #fff;
+}
