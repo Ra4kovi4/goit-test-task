@@ -1,17 +1,16 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
+
 import PropTypes from 'prop-types';
 import { TweetCard } from 'components/TweetCard';
 import css from './TweetsList.module.css';
 
-export const TweetsList = React.memo(({ users }) => {
-  
+export const TweetsList = forwardRef(function TweetsList({ users }, ref) {
   const handleFollowChange = (id, isFollow) => {
     localStorage.setItem(`isFollow-${id}`, isFollow);
-    
   };
 
   return (
-    <ul className={css.tweets_list}>
+    <ul className={css.tweets_list} ref={ref}>
       {users.map(({ id, tweets, followers, avatar }) => (
         <li className={css.tweets_item} key={id}>
           <TweetCard

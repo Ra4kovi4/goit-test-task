@@ -29,16 +29,8 @@ export const TweetCard = ({
       toast.error('Oops, something went wrong! Please try again later', {
         position: 'top-right',
         autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
       });
     }
-
-    localStorage.setItem(`isFollow-${id}`, !isFollow);
 
     setFollowersCount(updatedFollowers);
   };
@@ -57,7 +49,7 @@ export const TweetCard = ({
       <div className={css.info_wrapper}>
         <p className={css.tweets}>{tweets} Tweets</p>
         <p className={css.followers}>
-          {followersCount.toLocaleString('en-US', { maximumFractionDigits: 0 })}
+          {followersCount.toLocaleString('en-US', { maximumFractionDigits: 0 })}{' '}
           Followers
         </p>
       </div>

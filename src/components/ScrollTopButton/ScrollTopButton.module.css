@@ -1,0 +1,32 @@
+.scroll_button_wrapper {
+  position: fixed;
+  right: 2%;
+  bottom: 5%;
+}
+
+.scroll_button {
+  display: block;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #ad90e6;
+  border: 1px solid #ad90e6;
+  color: #fff;
+  transform: translateY(0);
+  animation: scroll-top 1000ms linear infinite alternate;
+}
+
+@keyframes scroll-top {
+  0% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(10%);
+  }
+}
+
+.scroll_button:hover,
+.scroll_button:focus {
+  background-color: #fff;
+  color: #ad90e6;
+}

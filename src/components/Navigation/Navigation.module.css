@@ -1,7 +1,16 @@
 .nav_list {
   display: flex;
   list-style: none;
+  width: 100%;
   padding-bottom: 10px;
+
+  justify-content: space-between;
+  align-items: center;
+}
+.nav_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .nav_item:first-child {
   margin-right: 10px;

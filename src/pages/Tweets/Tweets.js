@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { fetchUsers, getFilteredUsers } from 'service';
+import { fetchUsers } from 'service';
+import { getFilteredUsers, getVisibleUsers } from '../../utils';
 import { TweetsList } from 'components/TweetsList';
 import { Loader } from '../../components/Loader';
 import { LoadButton } from 'components/LoadButton';
-import { BackButton } from 'components/BackButton';
 import { Dropdown } from 'components/Dropdown';
 import { NotFound } from 'components/NotFound';
+import { ScrollTopButton } from 'components/ScrollTopButton';
 import css from './Tweets.module.css';
 
 const Tweets = () => {
@@ -15,60 +16,85 @@ const Tweets = () => {
   const [users, setUsers] = useState([]);
   const [page, setPage] = useState(1);
   const [selectedButton, setSelectedButton] = useState('show all');
-
+  const [showScrollButton, setShowScrollButton] = useState(false);
+  const listRef = useRef(null);
 
   useEffect(() => {
+    setIsLoading(true);
     const getUsers = async () => {
       try {
-        setIsLoading(true);
-        const result = await fetchUsers(page);
-        if (page === 1) {
-          setUsers(result);
-        } else {
-          setUsers(prevUsers => [...prevUsers, ...result]);
-        }
+        const result = await fetchUsers();
+        setUsers(result);
       } catch (error) {
         toast.error('Oops, something went wrong! Please try again later', {
-          position: "top-right",
+          position: 'top-right',
           autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          });
+        });
       } finally {
         setIsLoading(false);
       }
-     
     };
     getUsers();
-  }, [page]);
+  }, [selectedButton]);
 
   const filteredUsersList = getFilteredUsers(users, selectedButton);
+  const visibleList = getVisibleUsers(filteredUsersList, page);
 
-  const handleLoadMore = () => {
+  const handleLoadMore = async () => {
+    setIsLoading(true);
     setPage(prevPage => prevPage + 1);
+    setIsLoading(false);
   };
 
+  useEffect(() => {
+    if (listRef.current) {
+      listRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [visibleList]);
+  const showMore =
+    visibleList.length >= 3 &&
+    filteredUsersList.length - visibleList.length > 0;
+
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isShow = window.scrollY > 100;
+      setShowScrollButton(isShow);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className={css.container}>
+    <main className={css.container}>
       <div className={css.dropdown_wrapper}>
-        <BackButton />
         <Dropdown
           setSelectedButton={setSelectedButton}
           selectedButton={selectedButton}
         />
       </div>
-      {filteredUsersList.length === 0 && <NotFound />}
-      <TweetsList users={filteredUsersList} />
-      {isLoading && <Loader />}
-      {filteredUsersList?.length > 0 && filteredUsersList.length < 12 && (
-        <LoadButton onClick={handleLoadMore} />
+
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          {!isLoading && visibleList.length === 0 && <NotFound />}
+          <TweetsList users={visibleList} ref={listRef} />
+          <div ref={listRef}></div>
+          {showMore && <LoadButton onClick={handleLoadMore} />}
+        </>
       )}
-      <ToastContainer/>
-    </div>
+      {showScrollButton && <ScrollTopButton scrollToTop={handleScrollToTop} />}
+      <ToastContainer />
+    </main>
   );
 };
 

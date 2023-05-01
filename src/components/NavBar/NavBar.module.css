@@ -1,7 +1,7 @@
 .header {
   display: inline-flex;
   position: fixed;
-  width:98%;
+  width: 98%;
   background-color: #fff;
   justify-content: space-around;
   align-items: center;
